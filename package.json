@@ -1,0 +1,21 @@
+{
+  "name": "hardhat_api",
+  "version": "1.0.0",
+  "description": "hardhat deploy smart contract",
+  "main": "app.js",
+  "scripts": {
+    "test": "npx hardhat run --network bscTestnet ./scripts/deploy.js"
+  },
+  "author": "Souphamy",
+  "license": "ISC",
+  "dependencies": {
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.8",
+    "@openzeppelin/contracts": "^4.8.1",
+    "chai": "^4.3.7",
+    "ethers": "^5.7.2"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^2.0.0",
+    "hardhat": "^2.12.7"
+  }
+}
