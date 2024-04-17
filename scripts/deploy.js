@@ -7,6 +7,7 @@
 const hre = require("hardhat");
 
 async function main() {
+
   // const currentTimestampInSeconds = Math.round(Date.now() / 1000);
   // const ONE_YEAR_IN_SECS = 365 * 24 * 60 * 60;
   // const unlockTime = currentTimestampInSeconds + ONE_YEAR_IN_SECS;
@@ -14,8 +15,13 @@ async function main() {
   // const RevenueToken = await hre.ethers.getContractFactory("RevenueToken");
   // const contract = await RevenueToken.deploy();
   // await contract.deployed();
+  
+  // const RevenueToken = await hre.ethers.getContractFactory("revenue/RevenueToken");
+  // const contract = await RevenueToken.deploy();
+  // await contract.deployed();
+  // console.log("Deployed Result = : ", contract);
 
-  const RevenueToken = await hre.ethers.getContractFactory("RevenueToken");
+  const RevenueToken = await hre.ethers.getContractFactory("revenue/RevenueToken");
   const contract = await RevenueToken.deploy();
   await contract.deployed();
   console.log("Deployed Result = : ", contract);

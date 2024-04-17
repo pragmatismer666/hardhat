@@ -17,6 +17,12 @@ module.exports = {
     defaultNetwork: "goerli",
     allowUnlimitedContractSize: true,
     networks: {
+        development: {
+            host: "159.65.63.163",
+            port: 7545,
+            network_id: "*" ,// Match any network id
+            gas: 13443950 // Set the gas limit for transactions on the development network
+        },
         bscmainnet: {
             url: `https://bsc-dataseed.binance.org`,
             accounts: [`0x${PRIVATE_KEY}`],
