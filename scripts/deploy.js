@@ -21,9 +21,11 @@ async function main() {
   // await contract.deployed();
   // console.log("Deployed Result = : ", contract);
 
-  const RevenueToken = await hre.ethers.getContractFactory("revenue/RevenueToken");
+  const RevenueToken = await hre.ethers.getContractFactory("RevenueToken");
   const contract = await RevenueToken.deploy();
   await contract.deployed();
+  // const contract = await RevenueToken.deploy({ gasLimit: "0x10000000" });
+  // await contract.waitForDeployment();
   console.log("Deployed Result = : ", contract);
 }
 

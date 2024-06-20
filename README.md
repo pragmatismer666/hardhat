@@ -18,3 +18,6 @@ Verify Command :
     npx hardhat verify --network bscTestnet tokenAddress
     npx hardhat verify --network bscTestnet 0xd3b1Bb93683FD9bBC3112d66b15Cb2729d9f0C0F
 ```
+====================================================================================== neon
+npx hardhat run scripts/deploy.js --network neonlabs
+npx hardhat verify 0x09F5759D8D536B5791A64702b26B393aa46C020a --network neonlabs

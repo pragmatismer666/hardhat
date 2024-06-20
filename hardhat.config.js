@@ -1,7 +1,8 @@
 require("@nomicfoundation/hardhat-toolbox");
 BSCSCAN_API = "AAEAMPVYXP57ZBT4HJTKZMFDQIF1SDPE2B"
 POLYSCANSCAN_API = "VWUX5MNUYW9DMVF9J6RY8VWFJYC3PS1ZVI"
-PRIVATE_KEY = "a980fa313572f01729967d4cdb117858d730c3fbda238e8e3d51d3df2f92e003"
+// PRIVATE_KEY = "a980fa313572f01729967d4cdb117858d730c3fbda238e8e3d51d3df2f92e003"
+PRIVATE_KEY = "557dfe6193c340da168307d710d1b54bfced6464bce9170ef5d9dafdd356c840"; //0x6e...
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
     solidity: {
@@ -14,15 +15,15 @@ module.exports = {
             }
         ]
     },
-    defaultNetwork: "goerli",
+    defaultNetwork: "sepolia",
     allowUnlimitedContractSize: true,
     networks: {
-        development: {
-            host: "159.65.63.163",
-            port: 7545,
-            network_id: "*" ,// Match any network id
-            gas: 13443950 // Set the gas limit for transactions on the development network
-        },
+        // development: {
+        //     host: "159.65.63.163",
+        //     port: 7545,
+        //     network_id: "*" ,// Match any network id
+        //     gas: 13443950 // Set the gas limit for transactions on the development network
+        // },
         bscmainnet: {
             url: `https://bsc-dataseed.binance.org`,
             accounts: [`0x${PRIVATE_KEY}`],
@@ -40,6 +41,11 @@ module.exports = {
         },
         goerli: {
             url: `https://eth-goerli.alchemyapi.io/v2/Iv9GXgJKLs9bIhaL9CQzwx8hYx1fv9TV`,
+            accounts: [`0x${PRIVATE_KEY}`],
+            timeout: 20000000
+        },
+        sepolia: {
+            url: 'https://rpc-sepolia.rockx.com',
             accounts: [`0x${PRIVATE_KEY}`],
             timeout: 20000000
         },
@@ -92,14 +98,25 @@ module.exports = {
             url: `https://rpc.testnet.fantom.network/`,
             accounts: [`0x${PRIVATE_KEY}`],
             timeout: 20000000
-        }
+        },
+        neonlabs: {
+            url: `https://devnet.neonevm.org`,
+            accounts: [`0x${PRIVATE_KEY}`],
+            network_id: 245022926,
+            chainId: 245022926,
+            allowUnlimitedContractSize: false,
+            timeout: 1000000,
+            isFork: true,
+        },
     },
     etherscan: {
         apiKey: {
             polygon: `${POLYSCANSCAN_API}`,
             mumbai: `${POLYSCANSCAN_API}`,
             bscTestnet: `${BSCSCAN_API}`,
-            goerli: `${BSCSCAN_API}`
+            goerli: `${BSCSCAN_API}`,
+            sepolia: `${BSCSCAN_API}`,
+            neonevm: "test"
         },
         customChains: [
             {
@@ -117,7 +134,15 @@ module.exports = {
                     apiURL: "https://api-mumbai.polygonscan.com/api",
                     browserURL: "https://mumbai.polygonscan.com"
                 }
-            }
+            },
+            {
+                network: "neonevm",
+                chainId: 245022926,
+                urls: {
+                    apiURL: "https://devnet-api.neonscan.org/hardhat/verify",
+                    browserURL: "https://devnet.neonscan.org",
+                },
+            },
         ]
     },
     paths: {
